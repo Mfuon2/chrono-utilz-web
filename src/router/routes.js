@@ -53,5 +53,9 @@ export default [
     path: '/api-docs',
     name: 'APIDocs',
     component: APIDocs
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/'
   }
 ]

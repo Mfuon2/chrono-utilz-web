@@ -42,6 +42,9 @@ const functionGroups = [
       { name: 'formatISO', description: 'Format date in ISO 8601 format' },
       { name: 'formatCustom', description: 'Format date with custom pattern' },
       { name: 'formatLocalized', description: 'Format date with locale-specific formatting' },
+      { name: 'formatCalendar', description: 'Format date in calendar format' },
+      { name: 'formatTimezone', description: 'Format date with timezone' },
+      { name: 'formatRelativeLocalized', description: 'Format relative time with localization' },
       { name: 'toISOString', description: 'Convert date to ISO string' },
       { name: 'formatDate', description: 'Format date with specified pattern' }
     ]
@@ -53,13 +56,15 @@ const functionGroups = [
       { name: 'parseMultipleFormats', description: 'Parse date with multiple format attempts' },
       { name: 'smartParse', description: 'Intelligently parse various date formats' },
       { name: 'parseNaturalLanguage', description: 'Parse natural language date expressions' },
-      { name: 'parseDate', description: 'Parse date string with format' }
+      { name: 'parseDate', description: 'Parse date string with format' },
+      { name: 'validateDateFormat', description: 'Validate date format string' }
     ]
   },
   {
     name: 'Duration & Time Formatting',
     functions: [
       { name: 'formatDuration', description: 'Format duration in human-readable format' },
+      { name: 'humanizeDuration', description: 'Humanize duration in readable format' },
       { name: 'formatTime', description: 'Format time component' },
       { name: 'getRelativeTime', description: 'Get relative time representation' },
       { name: 'formatElapsed', description: 'Format elapsed time' }

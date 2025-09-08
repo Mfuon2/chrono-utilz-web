@@ -61,6 +61,7 @@ const functionGroups = [
   {
     name: 'Time Differences',
     functions: [
+      { name: 'getDateDiff', description: 'Get difference between dates' },
       { name: 'daysBetween', description: 'Calculate days between dates' },
       { name: 'weeksBetween', description: 'Calculate weeks between dates' },
       { name: 'monthsBetween', description: 'Calculate months between dates' },
@@ -101,6 +102,18 @@ const functionGroups = [
       { name: 'throttle', description: 'Throttle function calls' },
       { name: 'memoize', description: 'Cache function results' },
       { name: 'benchmark', description: 'Measure execution time' }
+    ]
+  },
+  {
+    name: 'Date Operations',
+    functions: [
+      { name: 'addDays', description: 'Add days to date' },
+      { name: 'subtractDays', description: 'Subtract days from date' },
+      { name: 'getNextWeekday', description: 'Get next occurrence of weekday' },
+      { name: 'getPreviousWeekday', description: 'Get previous occurrence of weekday' },
+      { name: 'getFirstDayOfMonth', description: 'Get first day of month' },
+      { name: 'getLastDayOfMonth', description: 'Get last day of month' },
+      { name: 'getDayOfWeek', description: 'Get day of week from date' }
     ]
   }
 ]

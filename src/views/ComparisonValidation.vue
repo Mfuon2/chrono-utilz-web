@@ -43,8 +43,12 @@ const functionGroups = [
       { name: 'isAfter', description: 'Check if date is after another date' },
       { name: 'isBefore', description: 'Check if date is before another date' },
       { name: 'isBetween', description: 'Check if date is between two dates' },
+      { name: 'isWithinRange', description: 'Check if date is within specified range' },
+      { name: 'isInRange', description: 'Check if date is in range' },
       { name: 'compareDates', description: 'Compare two dates and return result' },
-      { name: 'closestTo', description: 'Find closest date from array of dates' }
+      { name: 'closestTo', description: 'Find closest date from array of dates' },
+      { name: 'min', description: 'Get minimum date from array' },
+      { name: 'max', description: 'Get maximum date from array' }
     ]
   },
   {
@@ -75,6 +79,9 @@ const functionGroups = [
     name: 'Date Type Validation',
     functions: [
       { name: 'isValidDate', description: 'Check if input is a valid date' },
+      { name: 'isValidTimestamp', description: 'Check if input is a valid timestamp' },
+      { name: 'isDateString', description: 'Check if input is a date string' },
+      { name: 'isTimeString', description: 'Check if input is a time string' },
       { name: 'isLeapYear', description: 'Check if year is a leap year' },
       { name: 'isWeekend', description: 'Check if date falls on weekend' },
       { name: 'isWeekday', description: 'Check if date falls on weekday' },

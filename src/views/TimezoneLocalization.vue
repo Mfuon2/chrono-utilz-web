@@ -51,13 +51,18 @@ const functionGroups = [
       { name: 'formatInTimezone', description: 'Format date in specific timezone' },
       { name: 'formatToTimezone', description: 'Format date to timezone' },
       { name: 'formatWithTimezone', description: 'Format date with timezone display' },
-      { name: 'formatUTC', description: 'Format date in UTC' }
+      { name: 'formatUTC', description: 'Format date in UTC' },
+      { name: 'formatLocalizedShort', description: 'Format date in short localized format' },
+      { name: 'formatLocalizedLong', description: 'Format date in long localized format' }
     ]
   },
   {
     name: 'Timezone Information',
     functions: [
       { name: 'getTimezoneOffset', description: 'Get timezone offset in minutes' },
+      { name: 'getTimezoneAbbreviation', description: 'Get timezone abbreviation' },
+      { name: 'isDaylightSaving', description: 'Check if date is in daylight saving time' },
+      { name: 'getTimezoneTransitions', description: 'Get timezone transition information' },
       { name: 'listTimezones', description: 'Get list of available timezones' },
       { name: 'getTimezoneInfo', description: 'Get detailed timezone information' },
       { name: 'isValidTimezone', description: 'Check if timezone is valid' }

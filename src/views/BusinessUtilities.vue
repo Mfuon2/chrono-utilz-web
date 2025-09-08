@@ -62,6 +62,7 @@ const functionGroups = [
     functions: [
       { name: 'businessDaysInMonth', description: 'Count business days in month' },
       { name: 'differenceInBusinessDays', description: 'Get business days between dates' },
+      { name: 'getBusinessDays', description: 'Get business days in range' },
       { name: 'isFirstBusinessDayOfMonth', description: 'Check if first business day of month' },
       { name: 'isLastBusinessDayOfMonth', description: 'Check if last business day of month' },
       { name: 'getBusinessDaysInMonth', description: 'Get all business days in month' },
