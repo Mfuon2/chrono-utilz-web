@@ -1,13 +1,22 @@
 <template>
   <div class="text-gray-800">
     <!-- Hero Section -->
-    <section id="home" class="py-16 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4">Simplify Date Operations</h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">136+ powerful functions for date manipulation, business logic, formatting, and parsing</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#documentation" class="bg-white text-indigo-700 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-lg">Get Started</a>
-          <RouterLink to="/documentation" class="bg-transparent border-2 border-white hover:bg-white/10 font-semibold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">Documentation</RouterLink>
+    <section id="home" class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-cyan-600/20"></div>
+      <div class="container mx-auto px-4 text-center relative z-10">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
+          Simplify Date Operations
+        </h2>
+        <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-slate-300 font-light">
+          136+ powerful functions for date manipulation, business logic, formatting, and parsing
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
+          <a href="#documentation" class="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold py-4 px-8 rounded-xl transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            Get Started
+          </a>
+          <RouterLink to="/documentation" class="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:border-white/40 text-white font-semibold py-4 px-8 rounded-xl transition duration-300 flex items-center justify-center">
+            Documentation
+          </RouterLink>
         </div>
       </div>
     </section>
