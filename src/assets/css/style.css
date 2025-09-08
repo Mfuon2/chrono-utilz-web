@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200; /* Normal */
+  }
+  
+  /* Override specific elements that need different weights */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500; /* Bold for headings */
+  }
+  
+  .font-light {
+    font-weight: 100;
+  }
+  
+  .font-semibold {
+    font-weight: 400;
+  }
+  
+  .font-bold {
+    font-weight: 500;
+  }
+  
+  .font-extrabold {
+    font-weight: 600;
+  }
+  
+  .font-mono, pre, code {
+    font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
+    font-weight: 200;
+  }
+  
+  /* IntelliJ Dracula theme for code blocks */
+  pre, code {
+    background-color: #2b2b2b !important;
+    color: #a9b7c6 !important;
+    padding-left: 2px;
+    border-radius: 8px !important;
+    overflow-x: auto !important;
+    border: none !important;
+    font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+  }
+  
+  /* Inline code styling */
+  code:not(pre code) {
+    background-color: #2b2b2b !important;
+    color: #a9b7c6 !important;
+    padding: 0.2rem 0.4rem !important;
+    border-radius: 4px !important;
+    font-size: 0.9em !important;
+    border: none !important;
+    font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace !important;
+    font-weight: 400 !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+  }
+  
+  /* Force Dracula theme on all code elements with maximum specificity */
+  .bg-gray-100 code,
+  .bg-gray-50 code,
+  .bg-white code,
+  .rounded-lg code,
+  .shadow-sm code,
+  .p-6 code,
+  .p-4 code,
+  pre code,
+  div code,
+  section code,
+  .api-docs-container code {
+    background-color: #2b2b2b !important;
+    color: #a9b7c6 !important;
+    font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+  }
+  
+  /* Override any inherited opacity or color properties */
+  * code,
+  * pre {
+    opacity: 1 !important;
+    color: #a9b7c6 !important;
+  }
+  
+  /* Dracula theme syntax colors */
+  .hljs {
+    background: #2b2b2b;
+    color: #a9b7c6;
+  }
+  
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-literal,
+  .hljs-title,
+  .hljs-section,
+  .hljs-doctag,
+  .hljs-type,
+  .hljs-name {
+    color: #cc7832;
+  }
+  
+  .hljs-string,
+  .hljs-title.class_,
+  .hljs-title.class_.inherited__,
+  .hljs-title.function_,
+  .hljs-params {
+    color: #6a8759;
+  }
+  
+  .hljs-comment,
+  .hljs-quote {
+    color: #808080;
+    font-style: italic;
+  }
+  
+  .hljs-number,
+  .hljs-regexp,
+  .hljs-link {
+    color: #6897bb;
+  }
+  
+  .hljs-meta,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo,
+  .hljs-attribute {
+    color: #bbb529;
+  }
+  
+  .hljs-built_in,
+  .hljs-symbol {
+    color: #9876aa;
+  }
+  
+  .hljs-deletion {
+    color: #ff5555;
+  }
+  
+  .hljs-addition {
+    color: #50fa7b;
+  }
+  
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  
+  .hljs-strong {
+    font-weight: bold;
+  }
+}

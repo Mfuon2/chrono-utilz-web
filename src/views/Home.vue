@@ -1,0 +1,117 @@
+<template>
+  <div class="text-gray-800">
+    <!-- Hero Section -->
+    <section id="home" class="py-16 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Simplify Date Operations</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">136+ powerful functions for date manipulation, business logic, formatting, and parsing</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#documentation" class="bg-white text-indigo-700 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-lg">Get Started</a>
+          <RouterLink to="/documentation" class="bg-transparent border-2 border-white hover:bg-white/10 font-semibold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">Documentation</RouterLink>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Three Pillars Architecture</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div class="text-indigo-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Core Operations</h3>
+            <p class="text-gray-600">45+ functions for date manipulation and comparison including add/subtract time, date differences, and validation.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div class="text-indigo-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Business Utilities</h3>
+            <p class="text-gray-600">55+ functions for real-world business logic including working days, fiscal periods, payroll, and SLA compliance.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div class="text-indigo-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Formatting & Parsing</h3>
+            <p class="text-gray-600">35+ functions for advanced presentation including custom formatting, localization, and natural language parsing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Documentation Section -->
+    <section id="documentation" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Explore by Category</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <CategoryCard 
+            v-for="category in categories"
+            :key="category.name"
+            :category="category"
+          />
+        </div>
+      </div>
+    </section>
+
+  </div>
+</template>
+
+<script setup>
+import { RouterLink } from 'vue-router'
+import CategoryCard from '../components/CategoryCard.vue'
+
+const categories = [
+  {
+    name: 'Core Operations',
+    path: '/core-operations',
+    description: 'Date arithmetic, comparisons, and basic operations',
+    icon: '',
+    color: 'bg-blue-100 text-blue-800'
+  },
+  {
+    name: 'Business Utilities',
+    path: '/business-utilities',
+    description: 'Working days, fiscal periods, payroll calculations',
+    icon: '',
+    color: 'bg-green-100 text-green-800'
+  },
+  {
+    name: 'Formatting & Parsing',
+    path: '/formatting-parsing',
+    description: 'Custom formats, localization, natural language',
+    icon: '',
+    color: 'bg-purple-100 text-purple-800'
+  },
+  {
+    name: 'Timezone & Localization',
+    path: '/timezone-localization',
+    description: 'Multi-timezone support and internationalization',
+    icon: '',
+    color: 'bg-yellow-100 text-yellow-800'
+  },
+  {
+    name: 'Comparison & Validation',
+    path: '/comparison-validation',
+    description: 'Date comparisons, range checks, validation rules',
+    icon: '',
+    color: 'bg-red-100 text-red-800'
+  },
+  {
+    name: 'Utility Functions',
+    path: '/utility-functions',
+    description: 'Helper functions and advanced utilities',
+    icon: '',
+    color: 'bg-indigo-100 text-indigo-800'
+  }
+]
+</script>
