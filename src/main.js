@@ -133,6 +133,28 @@ const trackPerformance = () => {
 // Track performance after app mounts
 app.mount('#app')
 
+// Initialize Google AdSense Auto Ads
+const initializeAdSense = () => {
+    if (typeof window !== 'undefined' && window.adsbygoogle) {
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: 'ca-pub-4915550631846848',
+                enable_page_level_ads: true,
+                overlays: {bottom: true}
+            })
+            console.log('AdSense Auto Ads initialized globally')
+        } catch (error) {
+            console.error('Error initializing AdSense:', error)
+        }
+    } else {
+        // Retry if AdSense script hasn't loaded yet
+        setTimeout(initializeAdSense, 1000)
+    }
+}
+
+// Initialize AdSense after a brief delay
+setTimeout(initializeAdSense, 1000)
+
 // Initialize performance tracking
 if (document.readyState === 'complete') {
     trackPerformance()

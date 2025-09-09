@@ -2,9 +2,9 @@
   <header class="bg-slate-900 text-white shadow-xl border-b border-slate-700/50">
     <div class="container mx-auto px-4 py-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <div>
-          <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">ChronoUtilz</h1>
-          <div class="mt-2 text-sm">
+        <div class="flex items-center space-x-4">
+          <ChronoUtilzLogo variant="horizontal" size="small" />
+          <div class="text-sm">
             <LibraryStatus />
           </div>
         </div>
@@ -34,4 +34,5 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import LibraryStatus from './LibraryStatus.vue'
+import ChronoUtilzLogo from './ChronoUtilzLogo.vue'
 </script>

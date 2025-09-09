@@ -4,8 +4,15 @@
     class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
   >
     <div class="flex items-center mb-3">
-      <div class="text-indigo-600 mr-3">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div class="mr-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="url(#iconGradient)">
+          <defs>
+            <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#22d3ee;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+            </linearGradient>
+          </defs>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="getSvgPath(category.name)" />
         </svg>
       </div>

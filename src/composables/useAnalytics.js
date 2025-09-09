@@ -150,6 +150,37 @@ export function useAnalytics() {
             })
         },
 
+        trackAdInteraction: (adType, action, adClient = 'ca-pub-4915550631846848') => {
+            trackEvent('ad_interaction', {
+                category: 'AdSense',
+                label: `${adType}_${action}`,
+                ad_type: adType,
+                ad_action: action,
+                ad_client: adClient
+            })
+        },
+
+        trackAdImpression: (adSlot, adFormat = 'auto') => {
+            trackEvent('ad_impression', {
+                category: 'AdSense',
+                label: adSlot,
+                ad_slot: adSlot,
+                ad_format: adFormat,
+                ad_client: 'ca-pub-4915550631846848'
+            })
+        },
+
+        trackAdRevenue: (value, currency = 'USD', adSlot = '') => {
+            if (gtag) {
+                gtag('event', 'ad_impression', {
+                    currency: currency,
+                    value: value,
+                    ad_slot: adSlot,
+                    ad_client: 'ca-pub-4915550631846848'
+                })
+            }
+        },
+
         // Enhanced conversion tracking
         trackGoalCompletion: (goalType, value = 1) => {
             if (gtag) {
@@ -208,6 +239,9 @@ function createMockAnalytics() {
         trackUserPreference: noop,
         trackAPIError: noop,
         trackPerformanceMetric: noop,
+        trackAdInteraction: noop,
+        trackAdImpression: noop,
+        trackAdRevenue: noop,
         trackGoalCompletion: noop,
         setCustomDimension: noop,
         setUserId: noop,

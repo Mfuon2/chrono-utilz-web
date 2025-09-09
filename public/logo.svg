@@ -1,0 +1,93 @@
+<svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Blue to Cyan gradient for text -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#22d3ee;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Blue to Cyan gradient for calendar -->
+    <linearGradient id="calendarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#22d3ee;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Darker Blue to Cyan gradient for calendar header -->
+    <linearGradient id="calendarHeaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0891b2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Clock gradient -->
+    <linearGradient id="clockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#22d3ee;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Calendar dots gradient -->
+    <linearGradient id="dotsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0891b2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#075985;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle for logo mark -->
+  <circle cx="60" cy="60" r="45" fill="#f8fafc" stroke="url(#clockGradient)" stroke-width="3"/>
+  
+  <!-- Calendar icon simplified -->
+  <rect x="35" y="35" width="50" height="40" rx="8" fill="url(#calendarGradient)" stroke="#000" stroke-width="2"/>
+  <rect x="35" y="35" width="50" height="15" rx="8" fill="url(#calendarHeaderGradient)"/>
+  
+  <!-- Calendar rings -->
+  <ellipse cx="50" cy="30" rx="4" ry="8" fill="#000"/>
+  <ellipse cx="50" cy="30" rx="2" ry="6" fill="#f8fafc"/>
+  <ellipse cx="70" cy="30" rx="4" ry="8" fill="#000"/>
+  <ellipse cx="70" cy="30" rx="2" ry="6" fill="#f8fafc"/>
+  
+  <!-- Calendar grid dots -->
+  <circle cx="42" cy="58" r="2" fill="url(#dotsGradient)"/>
+  <circle cx="52" cy="58" r="2" fill="url(#dotsGradient)"/>
+  <circle cx="62" cy="58" r="2" fill="url(#dotsGradient)"/>
+  <circle cx="72" cy="58" r="2" fill="url(#dotsGradient)"/>
+  <circle cx="42" cy="68" r="2" fill="url(#dotsGradient)"/>
+  <circle cx="52" cy="68" r="2" fill="url(#dotsGradient)"/>
+  <circle cx="62" cy="68" r="2" fill="url(#dotsGradient)"/>
+  
+  <!-- Clock element -->
+  <circle cx="75" cy="75" r="18" fill="url(#clockGradient)" stroke="#000" stroke-width="2"/>
+  <circle cx="75" cy="75" r="14" fill="#f8fafc"/>
+  
+  <!-- Clock hands -->
+  <line x1="75" y1="75" x2="75" y2="65" stroke="url(#dotsGradient)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="75" y1="75" x2="82" y2="75" stroke="url(#dotsGradient)" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="75" cy="75" r="2" fill="#22d3ee"/>
+  
+  <!-- Main Text: ChronoUtilz -->
+  <text x="130" y="45" font-family="Nunito, system-ui, -apple-system, 'Segoe UI', sans-serif" 
+        font-size="28" font-weight="700" fill="url(#textGradient)" filter="url(#shadow)">
+    ChronoUtilz
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="130" y="70" font-family="'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="500" fill="#6b7280">
+    Date Utility Library
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="350" cy="30" r="3" fill="url(#clockGradient)" opacity="0.6"/>
+  <circle cx="365" cy="45" r="2" fill="url(#textGradient)" opacity="0.6"/>
+  <circle cx="380" cy="35" r="2.5" fill="#22d3ee" opacity="0.6"/>
+  <circle cx="355" cy="85" r="2" fill="url(#dotsGradient)" opacity="0.6"/>
+  <circle cx="370" cy="95" r="3" fill="url(#calendarHeaderGradient)" opacity="0.6"/>
+</svg>

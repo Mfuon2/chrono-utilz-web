@@ -1,0 +1,16 @@
+{
+    "name": "ChronoUtilz - Date Utility Library",
+    "short_name": "ChronoUtilz",
+    "description": "A comprehensive date utility library with 136+ functions for business logic, formatting, and parsing.",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ],
+    "theme_color": "#4f46e5",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "/"
+}
