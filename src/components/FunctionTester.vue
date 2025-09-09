@@ -101,7 +101,7 @@
 
     <div class="mb-4 flex space-x-2">
       <button
-        @click="executeFunction"
+        @click="executeFunction(); analytics.trackButtonClick('test_function', `function_tester_${props.function.name}`)"
         class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300"
       >
         Execute
@@ -135,6 +135,7 @@
 
 <script setup>
 import { ref, inject, onMounted } from 'vue'
+import { useAnalytics } from '../composables/useAnalytics.js'
 
 const props = defineProps({
   function: Object,
@@ -142,6 +143,9 @@ const props = defineProps({
 })
 
 const addResult = inject('addResult')
+
+// Initialize analytics
+const analytics = useAnalytics()
 
 const parameters = ref([''])
 const timeAmount = ref(7)
@@ -262,6 +266,9 @@ const executeFunction = () => {
   result.value = null
   error.value = null
 
+  // Track function testing attempt
+  const startTime = performance.now()
+
   try {
     const func = props.chronoUtilz[props.function.name]
     if (!func) {
@@ -335,8 +342,29 @@ const executeFunction = () => {
     
     addResult?.(call, result.value)
     
+    // Track successful function execution
+    const executionTime = performance.now() - startTime
+    analytics.trackFunctionDemo(
+      props.function.name,
+      props.function.category || 'Unknown',
+      processedParams.length > 0 ? { paramCount: processedParams.length } : {},
+      result.value
+    )
+    analytics.trackPerformanceMetric('function_execution_time', Math.round(executionTime), 'ms')
+    
   } catch (err) {
     error.value = err.message
+    
+    // Track function execution error
+    const executionTime = performance.now() - startTime
+    analytics.trackFunctionDemo(
+      props.function.name,
+      props.function.category || 'Unknown',
+      processedParams?.length > 0 ? { paramCount: processedParams.length } : {},
+      null,
+      err
+    )
+    analytics.trackAPIError('function_execution', 'execution_error', err.message)
   }
 }
 </script>
