@@ -134,7 +134,7 @@
           
           <div class="ml-8 grid md:grid-cols-2 gap-6">
             <div class="bg-blue-50 rounded-lg p-6">
-              <h4 class="font-semibold text-gray-900 mb-3">🚀 Performance Optimizations</h4>
+              <h4 class="font-semibold text-gray-900 mb-3">Performance Optimizations</h4>
               <ul class="space-y-2 text-sm text-gray-700">
                 <li>• Tree-shaking optimizations (reduce bundle size by 40%)</li>
                 <li>• Lazy loading for timezone data</li>
@@ -143,7 +143,7 @@
               </ul>
             </div>
             <div class="bg-blue-50 rounded-lg p-6">
-              <h4 class="font-semibold text-gray-900 mb-3">🎯 Enhanced Parsing</h4>
+              <h4 class="font-semibold text-gray-900 mb-3">Enhanced Parsing</h4>
               <ul class="space-y-2 text-sm text-gray-700">
                 <li>• Complex expressions: "every 2nd Tuesday"</li>
                 <li>• Relative ranges: "last week of March"</li>
@@ -166,7 +166,7 @@
           
           <div class="ml-8 grid md:grid-cols-2 gap-6">
             <div class="bg-gray-50 rounded-lg p-6">
-              <h4 class="font-semibold text-gray-900 mb-3">📊 Advanced Analytics</h4>
+              <h4 class="font-semibold text-gray-900 mb-3">Advanced Analytics</h4>
               <ul class="space-y-2 text-sm text-gray-700">
                 <li>• Resource utilization tracking</li>
                 <li>• Capacity planning utilities</li>
@@ -175,7 +175,7 @@
               </ul>
             </div>
             <div class="bg-gray-50 rounded-lg p-6">
-              <h4 class="font-semibold text-gray-900 mb-3">🌍 Global Business Support</h4>
+              <h4 class="font-semibold text-gray-900 mb-3">Global Business Support</h4>
               <ul class="space-y-2 text-sm text-gray-700">
                 <li>• 50+ country holiday calendars</li>
                 <li>• Regional working week patterns</li>
@@ -198,7 +198,7 @@
           
           <div class="ml-8 grid md:grid-cols-2 gap-6">
             <div class="bg-gray-50 rounded-lg p-6">
-              <h4 class="font-semibold text-gray-900 mb-3">🛠️ Development Tools</h4>
+              <h4 class="font-semibold text-gray-900 mb-3">Development Tools</h4>
               <ul class="space-y-2 text-sm text-gray-700">
                 <li>• VS Code extension with IntelliSense</li>
                 <li>• ESLint plugin for best practices</li>
@@ -207,7 +207,7 @@
               </ul>
             </div>
             <div class="bg-gray-50 rounded-lg p-6">
-              <h4 class="font-semibold text-gray-900 mb-3">📚 Documentation & Testing</h4>
+              <h4 class="font-semibold text-gray-900 mb-3">Documentation & Testing</h4>
               <ul class="space-y-2 text-sm text-gray-700">
                 <li>• Interactive playground improvements</li>
                 <li>• Automated integration examples</li>
@@ -230,7 +230,7 @@
           
           <div class="ml-8 grid md:grid-cols-2 gap-6">
             <div class="bg-purple-50 rounded-lg p-6">
-              <h4 class="font-semibold text-gray-900 mb-3">🧩 Plugin Architecture</h4>
+              <h4 class="font-semibold text-gray-900 mb-3">Plugin Architecture</h4>
               <ul class="space-y-2 text-sm text-gray-700">
                 <li>• Modular plugin system</li>
                 <li>• Third-party extensions marketplace</li>
@@ -239,7 +239,7 @@
               </ul>
             </div>
             <div class="bg-purple-50 rounded-lg p-6">
-              <h4 class="font-semibold text-gray-900 mb-3">🤖 AI-Powered Features</h4>
+              <h4 class="font-semibold text-gray-900 mb-3">AI-Powered Features</h4>
               <ul class="space-y-2 text-sm text-gray-700">
                 <li>• Natural language query understanding</li>
                 <li>• Intelligent date pattern recognition</li>
@@ -253,29 +253,29 @@
     </section>
 
     <!-- Community & Contributions -->
-    <section class="px-6 py-16 bg-gradient-to-r from-blue-600 to-purple-600">
-      <div class="max-w-4xl mx-auto text-center text-white">
+    <section class="px-6 py-16 bg-white">
+      <div class="max-w-4xl mx-auto text-center text-gray-900">
         <h2 class="text-3xl font-bold mb-6">Shape the Future of ChronoUtilz</h2>
-        <p class="text-xl mb-8 opacity-90">
+        <p class="text-xl mb-8 text-gray-600">
           Your feedback and contributions drive our roadmap. Join our growing community 
           of developers building the future of date utilities.
         </p>
         
         <div class="grid md:grid-cols-3 gap-6 mt-12">
-          <div class="bg-white bg-opacity-10 rounded-lg p-6">
-            <div class="text-3xl mb-4">💡</div>
-            <h3 class="font-semibold mb-2">Feature Requests</h3>
-            <p class="text-sm opacity-80">Share your ideas and vote on upcoming features</p>
+          <div class="bg-gray-100 rounded-lg p-6">
+            <div class="text-3xl mb-4"></div>
+            <h3 class="font-semibold mb-2 text-gray-900">Feature Requests</h3>
+            <p class="text-sm text-gray-600">Share your ideas and vote on upcoming features</p>
           </div>
-          <div class="bg-white bg-opacity-10 rounded-lg p-6">
-            <div class="text-3xl mb-4">🐛</div>
-            <h3 class="font-semibold mb-2">Bug Reports</h3>
-            <p class="text-sm opacity-80">Help us improve stability and performance</p>
+          <div class="bg-gray-100 rounded-lg p-6">
+            <div class="text-3xl mb-4"></div>
+            <h3 class="font-semibold mb-2 text-gray-900">Bug Reports</h3>
+            <p class="text-sm text-gray-600">Help us improve stability and performance</p>
           </div>
-          <div class="bg-white bg-opacity-10 rounded-lg p-6">
-            <div class="text-3xl mb-4">🤝</div>
-            <h3 class="font-semibent mb-2">Contributions</h3>
-            <p class="text-sm opacity-80">Code, documentation, and community support</p>
+          <div class="bg-gray-100 rounded-lg p-6">
+            <div class="text-3xl mb-4"></div>
+            <h3 class="font-semibold mb-2 text-gray-900">Contributions</h3>
+            <p class="text-sm text-gray-600">Code, documentation, and community support</p>
           </div>
         </div>
 
@@ -283,7 +283,7 @@
           <a 
             href="https://github.com/mfuon2/chrono-utilz/issues" 
             target="_blank"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
           >
             <span>Join the Discussion</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -310,11 +310,11 @@
             <div class="text-sm text-gray-600">Total Functions</div>
           </div>
           <div class="bg-white rounded-lg p-6 shadow-sm">
-            <div class="text-3xl font-bold text-green-600 mb-2">TypeScript</div>
+            <div class="text-3xl font-bold text-blue-600 mb-2">TypeScript</div>
             <div class="text-sm text-gray-600">Native Support</div>
           </div>
           <div class="bg-white rounded-lg p-6 shadow-sm">
-            <div class="text-3xl font-bold text-orange-600 mb-2">0</div>
+            <div class="text-3xl font-bold text-blue-600 mb-2">0</div>
             <div class="text-sm text-gray-600">Dependencies</div>
           </div>
         </div>
