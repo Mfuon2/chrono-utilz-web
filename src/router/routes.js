@@ -7,6 +7,7 @@ import ComparisonValidation from '../views/ComparisonValidation.vue'
 import UtilityFunctions from '../views/UtilityFunctions.vue'
 import Documentation from '../views/Documentation.vue'
 import APIDocs from '../views/APIDocs.vue'
+import Roadmap from '../views/Roadmap.vue'
 
 export default [
   {
@@ -53,6 +54,10 @@ export default [
     path: '/api-docs',
     name: 'APIDocs',
     component: APIDocs
+  },  {
+    path: '/roadmap',
+    name: 'Roadmap',
+    component: Roadmap
   },
   {
     path: '/:pathMatch(.*)*',
