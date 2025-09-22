@@ -138,9 +138,10 @@ const demoFunctions = [
   },
   {
     name: 'smartParse',
-    example: 'smartParse("January 15th, 2024")',
+    example: 'smartParse("2024-01-15")',
     description: 'Intelligently parse various date formats',
-    needsStringInput: true
+    needsStringInput: true,
+    defaultStringValue: '2024-01-15'
   },
   {
     name: 'parseNaturalLanguage',
@@ -174,7 +175,8 @@ const demoFunctions = [
     name: 'humanizeDuration',
     example: 'humanizeDuration(3661000)',
     description: 'Humanize duration in milliseconds',
-    needsNumberInput: true
+    needsNumberInput: true,
+    defaultNumberValue: 3661000
   },
   {
     name: 'getRelativeTime',

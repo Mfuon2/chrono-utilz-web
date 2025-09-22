@@ -9,9 +9,9 @@
       </div>
       <LibraryStatus />
     </div>
-    
+
     <CategoryNavigation current="Utility Functions" />
-    
+
     <!-- Function Categories -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       <FunctionGroup
@@ -96,7 +96,6 @@ const functionGroups = [
   {
     name: 'Utility Helpers',
     functions: [
-      { name: 'sleep', description: 'Pause execution for specified time' },
       { name: 'retry', description: 'Retry operation with delays' },
       { name: 'debounce', description: 'Debounce function calls' },
       { name: 'throttle', description: 'Throttle function calls' },
@@ -161,7 +160,7 @@ const demoFunctions = [
   // Date Range Generation
   {
     name: 'generateDateRange',
-    example: 'generateDateRange(startDate, endDate, "day")',
+    example: 'generateDateRange({start: startDate, end: endDate, unit: "day"})',
     description: 'Generate array of dates in range',
     needsDateInputs: 2,
     needsUnit: true
@@ -321,12 +320,6 @@ const demoFunctions = [
 
   // Utility Helpers
   {
-    name: 'sleep',
-    example: 'sleep(1000)',
-    description: 'Pause execution for milliseconds',
-    needsNumberInput: true
-  },
-  {
     name: 'benchmark',
     example: 'benchmark(() => someFunction())',
     description: 'Measure execution time',
@@ -336,7 +329,7 @@ const demoFunctions = [
   // Additional Utility Functions
   {
     name: 'getDateDiff',
-    example: 'getDateDiff(date1, date2, "days")',
+    example: 'getDateDiff(date1, date2, "day")',
     description: 'Get difference between dates in units',
     needsDateInputs: 2,
     needsUnit: true

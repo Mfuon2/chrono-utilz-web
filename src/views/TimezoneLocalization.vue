@@ -23,7 +23,7 @@
 
     <!-- Interactive Demo -->
     <div class="bg-white rounded-lg shadow-md p-6">
-      <h2 class="text-2xl font-semibold mb-4">Try Timezone & Localization</h2>
+      <h2 class="text-2xl font-semibold mb-6">Try Timezone & Localization</h2>
       <InteractiveDemo :functions="demoFunctions" />
     </div>
   </div>
@@ -39,33 +39,33 @@ const functionGroups = [
   {
     name: 'Timezone Conversion',
     functions: [
-      { name: 'convertToTimezone', description: 'Convert date to specific timezone' },
-      { name: 'convertFromTimezone', description: 'Convert date from specific timezone' },
+      { name: 'convertTimezone', description: 'Convert date to specific timezone' },
       { name: 'toUTC', description: 'Convert local time to UTC' },
-      { name: 'fromUTC', description: 'Convert UTC to local time' }
+      { name: 'getTimezoneOffset', description: 'Get timezone offset in minutes' },
+      { name: 'getUserTimezone', description: 'Get user timezone' }
     ]
   },
   {
     name: 'Timezone Formatting',
     functions: [
-      { name: 'formatInTimezone', description: 'Format date in specific timezone' },
-      { name: 'formatToTimezone', description: 'Format date to timezone' },
-      { name: 'formatWithTimezone', description: 'Format date with timezone display' },
-      { name: 'formatUTC', description: 'Format date in UTC' },
-      { name: 'formatLocalizedShort', description: 'Format date in short localized format' },
-      { name: 'formatLocalizedLong', description: 'Format date in long localized format' }
+      { name: 'formatTimezone', description: 'Format date in specific timezone' },
+      { name: 'formatLocalized', description: 'Format date with locale' },
+      { name: 'formatRelativeLocalized', description: 'Format relative time with locale' },
+      { name: 'getTimezoneString', description: 'Get timezone string representation' },
+      { name: 'formatCustom', description: 'Format date with custom pattern' },
+      { name: 'formatISO', description: 'Format date in ISO format' }
     ]
   },
   {
     name: 'Timezone Information',
     functions: [
-      { name: 'getTimezoneOffset', description: 'Get timezone offset in minutes' },
-      { name: 'getTimezoneAbbreviation', description: 'Get timezone abbreviation' },
-      { name: 'isDaylightSaving', description: 'Check if date is in daylight saving time' },
-      { name: 'getTimezoneTransitions', description: 'Get timezone transition information' },
       { name: 'listTimezones', description: 'Get list of available timezones' },
       { name: 'getTimezoneInfo', description: 'Get detailed timezone information' },
-      { name: 'isValidTimezone', description: 'Check if timezone is valid' }
+      { name: 'getTimezonesByRegion', description: 'Get timezones by region' },
+      { name: 'getTimezonesByOffset', description: 'Get timezones by offset' },
+      { name: 'searchTimezones', description: 'Search timezones by name' },
+      { name: 'configureTimezone', description: 'Configure timezone settings' },
+      { name: 'getTimezoneConfig', description: 'Get current timezone configuration' }
     ]
   }
 ]
@@ -73,18 +73,12 @@ const functionGroups = [
 const demoFunctions = [
   // Timezone Conversion Functions
   {
-    name: 'convertToTimezone',
-    example: 'convertToTimezone(new Date(), "America/New_York")',
+    name: 'convertTimezone',
+    example: 'convertTimezone(new Date(), "America/New_York")',
     description: 'Convert date to specific timezone',
     needsDateInput: true,
-    needsStringInput: true
-  },
-  {
-    name: 'convertFromTimezone',
-    example: 'convertFromTimezone(date, "Europe/London")',
-    description: 'Convert date from specific timezone',
-    needsDateInput: true,
-    needsStringInput: true
+    needsStringInput: true,
+    defaultStringValue: 'America/New_York'
   },
   {
     name: 'toUTC',
@@ -93,48 +87,55 @@ const demoFunctions = [
     needsDateInput: true
   },
   {
-    name: 'fromUTC',
-    example: 'fromUTC(utcDate)',
-    description: 'Convert UTC to local time',
-    needsDateInput: true
+    name: 'getTimezoneOffset',
+    example: 'getTimezoneOffset(new Date(), "America/Chicago")',
+    description: 'Get timezone offset in minutes',
+    needsDateInput: true,
+    needsStringInput: true,
+    defaultStringValue: 'America/Chicago'
+  },
+  {
+    name: 'getUserTimezone',
+    example: 'getUserTimezone()',
+    description: 'Get user timezone',
+    needsNothing: true
   },
 
   // Timezone Formatting Functions
   {
-    name: 'formatInTimezone',
-    example: 'formatInTimezone(new Date(), "America/Los_Angeles")',
+    name: 'formatTimezone',
+    example: 'formatTimezone(new Date(), "America/Los_Angeles")',
     description: 'Format date in specific timezone',
     needsDateInput: true,
-    needsStringInput: true
+    needsStringInput: true,
+    defaultStringValue: 'America/Los_Angeles'
   },
   {
-    name: 'formatToTimezone',
-    example: 'formatToTimezone(new Date(), "Asia/Tokyo")',
-    description: 'Format date to timezone',
+    name: 'formatLocalized',
+    example: 'formatLocalized(new Date(), "en-US")',
+    description: 'Format date with locale',
     needsDateInput: true,
-    needsStringInput: true
+    needsStringInput: true,
+    defaultStringValue: 'en-US'
   },
   {
-    name: 'formatWithTimezone',
-    example: 'formatWithTimezone(new Date(), "Europe/Paris")',
-    description: 'Format date with timezone display',
+    name: 'formatRelativeLocalized',
+    example: 'formatRelativeLocalized(new Date(), "fr-FR")',
+    description: 'Format relative time with locale',
     needsDateInput: true,
-    needsStringInput: true
+    needsStringInput: true,
+    defaultStringValue: 'fr-FR'
   },
   {
-    name: 'formatUTC',
-    example: 'formatUTC(new Date())',
-    description: 'Format date in UTC',
-    needsDateInput: true
+    name: 'getTimezoneString',
+    example: 'getTimezoneString(new Date(), "Asia/Tokyo")',
+    description: 'Get timezone string representation',
+    needsDateInput: true,
+    needsStringInput: true,
+    defaultStringValue: 'Asia/Tokyo'
   },
 
   // Timezone Information Functions
-  {
-    name: 'getTimezoneOffset',
-    example: 'getTimezoneOffset("America/Chicago")',
-    description: 'Get timezone offset in minutes',
-    needsStringInput: true
-  },
   {
     name: 'listTimezones',
     example: 'listTimezones()',
@@ -145,58 +146,68 @@ const demoFunctions = [
     name: 'getTimezoneInfo',
     example: 'getTimezoneInfo("Australia/Sydney")',
     description: 'Get detailed timezone information',
-    needsStringInput: true
-  },
-  {
-    name: 'isValidTimezone',
-    example: 'isValidTimezone("Pacific/Auckland")',
-    description: 'Check if timezone is valid',
-    needsStringInput: true
-  },
-
-  // Locale-specific Functions
-  {
-    name: 'formatLocalized',
-    example: 'formatLocalized(new Date(), "en-US")',
-    description: 'Format date with locale-specific formatting',
-    needsDateInput: true,
-    needsStringInput: true
-  },
-  {
-    name: 'formatLocalizedShort',
-    example: 'formatLocalizedShort(new Date(), "de-DE")',
-    description: 'Format in short localized format',
-    needsDateInput: true,
-    needsStringInput: true
-  },
-  {
-    name: 'formatLocalizedLong',
-    example: 'formatLocalizedLong(new Date(), "fr-FR")',
-    description: 'Format in long localized format',
-    needsDateInput: true,
-    needsStringInput: true
-  },
-
-  // Advanced Timezone Operations
-  {
-    name: 'getTimezoneAbbreviation',
-    example: 'getTimezoneAbbreviation("America/New_York")',
-    description: 'Get timezone abbreviation (EST, PST, etc.)',
-    needsStringInput: true
-  },
-  {
-    name: 'isDaylightSaving',
-    example: 'isDaylightSaving(new Date(), "America/New_York")',
-    description: 'Check if date is in daylight saving time',
-    needsDateInput: true,
-    needsStringInput: true
-  },
-  {
-    name: 'getTimezoneTransitions',
-    example: 'getTimezoneTransitions("Europe/London", 2024)',
-    description: 'Get DST transitions for timezone and year',
     needsStringInput: true,
-    needsNumberInput: true
+    defaultStringValue: 'Australia/Sydney'
+  },
+  {
+    name: 'getTimezonesByRegion',
+    example: 'getTimezonesByRegion("America")',
+    description: 'Get timezones by region',
+    needsStringInput: true,
+    defaultStringValue: 'America'
+  },
+  {
+    name: 'searchTimezones',
+    example: 'searchTimezones("New_York")',
+    description: 'Search timezones by name',
+    needsStringInput: true,
+    defaultStringValue: 'New_York'
+  },
+
+  // Additional Formatting Functions
+  {
+    name: 'formatCustom',
+    example: 'formatCustom(new Date(), "YYYY-MM-DD HH:mm")',
+    description: 'Format date with custom pattern',
+    needsDateInput: true,
+    needsStringInput: true,
+    defaultStringValue: 'YYYY-MM-DD HH:mm'
+  },
+  {
+    name: 'formatISO',
+    example: 'formatISO(new Date())',
+    description: 'Format date in ISO format',
+    needsDateInput: true
+  },
+  {
+    name: 'formatDate',
+    example: 'formatDate(new Date(), "MM/DD/YYYY")',
+    description: 'Format date with pattern',
+    needsDateInput: true,
+    needsStringInput: true,
+    defaultStringValue: 'MM/DD/YYYY'
+  },
+
+  // Timezone Configuration
+  {
+    name: 'configureTimezone',
+    example: 'configureTimezone({timezone: "America/New_York"})',
+    description: 'Configure timezone settings',
+    needsStringInput: true,
+    defaultStringValue: 'America/New_York'
+  },
+  {
+    name: 'getTimezoneConfig',
+    example: 'getTimezoneConfig()',
+    description: 'Get current timezone configuration',
+    needsNothing: true
+  },
+  {
+    name: 'getTimezonesByOffset',
+    example: 'getTimezonesByOffset(-5)',
+    description: 'Get timezones by offset',
+    needsNumberInput: true,
+    defaultNumberValue: -5
   }
 ]
 </script>

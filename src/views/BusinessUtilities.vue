@@ -249,6 +249,18 @@ const demoFunctions = [
 
   // Configuration Functions
   {
+    name: 'configureWorkingDays',
+    example: 'configureWorkingDays([1,2,3,4,5])',
+    description: 'Configure which days are working days (1=Mon, 7=Sun)',
+    needsCustom: true
+  },
+  {
+    name: 'configureHolidays',
+    example: 'configureHolidays(["2024-12-25", "2024-01-01"])',
+    description: 'Configure holiday dates',
+    needsCustom: true
+  },
+  {
     name: 'getBusinessDayConfig',
     example: 'getBusinessDayConfig()',
     description: 'Get current business day configuration',
