@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+import {build} from 'esbuild';
+const {outputFiles}=await build({entryPoints:['src/sandbox-runtime.js'],bundle:true,write:false,minify:true,platform:'browser',format:'iife',target:'es2020'});
+const source=JSON.stringify(outputFiles[0].text).replace(/</g,'\\u003c');
+const bootstrap=`let worker;let token;const source=${source};function stop(){if(worker){worker.terminate();worker=null;}}addEventListener('message',event=>{if(event.source!==parent)return;if(event.data.type==='stop'){stop();return;}if(event.data.type!=='run')return;stop();token=event.data.token;const url=URL.createObjectURL(new Blob([source],{type:'text/javascript'}));worker=new Worker(url);URL.revokeObjectURL(url);worker.onmessage=e=>{parent.postMessage({...e.data,token},'*');if(e.data.type==='done'||e.data.type==='error')stop();};worker.onerror=e=>{parent.postMessage({type:'error',text:e.message,token},'*');stop();};worker.postMessage({code:event.data.code});});parent.postMessage({type:'ready'},'*');`;
+fs.writeFileSync('public/sandbox.html',`<!doctype html><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' blob:; worker-src blob:; connect-src 'none'; img-src 'none'; style-src 'none'; form-action 'none'; base-uri 'none'"><script>${bootstrap}</script>`);
+console.log(`Built isolated playground runtime: ${outputFiles[0].contents.length} bytes.`);

@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+const root=path.resolve(process.env.CHRONO_SOURCE || '../chrono');
+if(!fs.existsSync(path.join(root,'docs/api.json'))) throw Error('Set CHRONO_SOURCE to a verified chrono-utilz checkout, then run sync:library.');
+const require=createRequire(path.join(root,'package.json'));
+const {build}=require('esbuild');
+const metadata=JSON.parse(fs.readFileSync(path.join(root,'docs/api.json')));
+const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json')));
+if(metadata.version!==pkg.version) throw Error('Stale API metadata');
+fs.mkdirSync('src/generated',{recursive:true});
+await build({entryPoints:[path.join(root,'dist/index.mjs')],outfile:'src/generated/chrono-utilz.mjs',bundle:true,minify:true,platform:'browser',format:'esm',target:'es2020',logLevel:'silent'});
+for(const [from,to] of [['docs/api.json','api.json'],['docs/examples.json','examples.json'],['docs/MIGRATION.md','behavior.md'],['docs/bundle-sizes.json','bundle-sizes.json']]) fs.copyFileSync(path.join(root,from),path.join('src/generated',to));
+fs.writeFileSync('src/generated/release.json',JSON.stringify({version:pkg.version,source:'https://github.com/Mfuon2/chrono-utilz',integrity:(await import('node:crypto')).createHash('sha256').update(fs.readFileSync('src/generated/chrono-utilz.mjs')).digest('hex')},null,2)+'\n');
+console.log(`Synced library ${pkg.version}: ${metadata.api.length} callable exports.`);

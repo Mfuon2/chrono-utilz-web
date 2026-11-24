@@ -1,120 +1,34 @@
-<template>
-  <div class="container mx-auto px-4 py-8">
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-4">ChronoUtilz Playground</h1>
-      <p class="text-lg text-gray-600">Interactive demo for all 136+ ChronoUtilz functions</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Function Explorer -->
-      <div class="lg:col-span-1">
-        <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
-          <h2 class="text-xl font-semibold mb-4">Functions Explorer</h2>
-          
-          <div class="mb-4">
-            <input 
-              v-model="searchQuery"
-              placeholder="Search functions..."
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
-
-          <div class="space-y-2 max-h-96 overflow-y-auto">
-            <button
-              v-for="func in filteredFunctions"
-              :key="func.name"
-              @click="selectFunction(func)"
-              :class="[
-                'w-full text-left px-3 py-2 rounded-md text-sm transition-colors',
-                selectedFunc?.name === func.name 
-                  ? 'bg-indigo-100 text-indigo-800' 
-                  : 'hover:bg-gray-100'
-              ]"
-            >
-              <div class="font-medium">{{ func.name }}</div>
-              <div class="text-gray-500 text-xs">{{ func.signature }}</div>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Interactive Console -->
-      <div class="lg:col-span-2">
-        <div class="bg-white rounded-lg shadow-md">
-          <div class="border-b border-gray-200 p-6">
-            <h2 class="text-xl font-semibold">Interactive Console</h2>
-          </div>
-          
-          <div class="p-6">
-            <FunctionTester 
-              v-if="selectedFunc"
-              :function="selectedFunc"
-              :chronoUtilz="chronoUtilz"
-            />
-            
-            <div v-else class="text-center text-gray-500 py-8">
-              Select a function from the explorer to get started
-            </div>
-          </div>
-        </div>
-
-        <!-- Recent Results -->
-        <div v-if="recentResults.length > 0" class="mt-6 bg-white rounded-lg shadow-md">
-          <div class="border-b border-gray-200 p-6">
-            <h2 class="text-xl font-semibold">Recent Results</h2>
-          </div>
-          <div class="p-6">
-            <div 
-              v-for="(result, index) in recentResults" 
-              :key="index"
-              class="mb-4 p-4 bg-gray-50 rounded-md"
-            >
-              <div class="font-mono text-sm text-indigo-700 mb-2">{{ result.call }}</div>
-              <div class="font-mono text-sm text-gray-700">{{ result.output }}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
-import { ref, computed, onMounted, provide } from 'vue'
-import { useChronoUtilz } from '../composables/useChronoUtilz'
-import FunctionTester from '../components/FunctionTester.vue'
-
-const { getFunctions, getLibrary } = useChronoUtilz()
-
-const functions = ref([])
-const chronoUtilz = ref(null)
-const searchQuery = ref('')
-const selectedFunc = ref(null)
-const recentResults = ref([])
-
-const filteredFunctions = computed(() => {
-  if (!searchQuery.value) return functions.value
-  return functions.value.filter(func => 
-    func.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-  )
-})
-
-const selectFunction = (func) => {
-  selectedFunc.value = func
+import {ref,onMounted,onUnmounted,watch} from 'vue';
+import {useRoute} from 'vue-router';
+import examples from '../generated/examples.json';
+import manifest from '../generated/api.json';
+import release from '../generated/release.json';
+const route=useRoute(),frame=ref(null),code=ref(''),selected=ref('business-days'),output=ref([]),running=ref(false),ready=ref(false),status=ref('Ready');
+let timer,token=0;
+function loadExample(){code.value=(examples.find(e=>e.id===selected.value)||examples[0]).code;output.value=[];}
+function loadRoute(){
+  if(route.query.example){selected.value=String(route.query.example);loadExample();}
+  else if(route.query.api && manifest.api.some(a=>a.name===route.query.api)){
+    selected.value='';code.value=`import { ${route.query.api} } from '@mfuon2/chrono-utilz';\n\n// Add arguments using the API reference.\nconsole.log(${route.query.api});`;
+  } else loadExample();
 }
-
-const addResult = (call, output) => {
-  recentResults.value.unshift({ call, output })
-  if (recentResults.value.length > 5) {
-    recentResults.value.pop()
-  }
+function stop(message='Stopped'){clearTimeout(timer);frame.value?.contentWindow?.postMessage({type:'stop'},'*');running.value=false;status.value=message;}
+function run(){
+  if(!ready.value)return;stop();output.value=[];running.value=true;status.value='Running';token++;
+  frame.value.contentWindow.postMessage({type:'run',code:code.value,token},'*');
+  timer=setTimeout(()=>{stop('Execution timed out after 2 seconds');output.value.push({level:'error',text:'Execution timed out after 2 seconds. The worker was terminated.'});},2000);
 }
-
-provide('addResult', addResult)
-
-onMounted(() => {
-  const functionsData = getFunctions()
-  functions.value = functionsData.functions || []
-  chronoUtilz.value = getLibrary()
-})
+function receive(event){
+  if(event.source!==frame.value?.contentWindow)return;
+  if(event.data.type==='ready'){ready.value=true;return;}
+  if(event.data.token!==token||!running.value)return;
+  if(event.data.type==='log')output.value.push(event.data);
+  if(event.data.type==='error'){output.value.push({level:'error',text:event.data.text});stop('Error');}
+  if(event.data.type==='done')stop('Complete');
+}
+onMounted(()=>{loadRoute();window.addEventListener('message',receive);});
+onUnmounted(()=>{stop();window.removeEventListener('message',receive);});
+watch(()=>route.query,loadRoute);
 </script>
+<template><section class="page playground"><div class="eyebrow">PLAYGROUND / v{{release.version}}</div><h1>Try it. Change it. Run it.</h1><p class="lead">Paste JavaScript or TypeScript with ChronoUtilz imports. Every run starts with fresh library state.</p><div class="play-toolbar"><label for="example-select">Example</label><select id="example-select" v-model="selected" @change="loadExample"><option disabled value="">Custom code</option><option v-for="example in examples" :key="example.id" :value="example.id">{{example.title}}</option></select><span class="run-status" role="status">{{status}}</span><button class="button" @click="run" :disabled="!ready||running">Run code</button><button class="button secondary" @click="stop()" :disabled="!running">Stop</button></div><div class="editor-grid"><div><label class="panel-heading" for="code-editor">EXAMPLE CODE</label><textarea id="code-editor" v-model="code" spellcheck="false" aria-label="Example code"></textarea></div><div class="output-panel"><div class="panel-heading">CONSOLE OUTPUT</div><div class="console" aria-live="polite"><p v-if="!output.length" class="console-empty">Run your code to see results.</p><pre v-for="(line,index) in output" :key="index" :class="{error:line.level==='error'}">{{line.text}}</pre></div></div></div><p class="muted">TypeScript is transpiled without type checking. Only ChronoUtilz imports are available. Code runs in a sandboxed worker with network access blocked and a two-second execution limit.</p><iframe ref="frame" src="/sandbox.html" sandbox="allow-scripts" title="Isolated code runner" hidden></iframe></section></template>

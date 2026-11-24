@@ -1,20 +1,9 @@
-<template>
-  <div id="app" class="min-h-screen bg-gray-50">
-    <AppHeader />
-    <main>
-      <RouterView />
-    </main>
-  </div>
-</template>
-
 <script setup>
-import { RouterView } from 'vue-router'
-import AppHeader from './components/AppHeader.vue'
+import {RouterLink,RouterView} from 'vue-router';
+import release from './generated/release.json';
 </script>
-
-<style>
-/* Custom styles for dropdown */
-.group:hover .group-hover\:block {
-  display: block;
-}
-</style>
+<template>
+  <header class="site-header"><RouterLink to="/" class="wordmark"><span class="brand-mark">C</span>ChronoUtilz</RouterLink><nav aria-label="Main navigation"><RouterLink to="/documentation">Documentation</RouterLink><RouterLink to="/api-docs">API reference</RouterLink><RouterLink to="/playground">Playground</RouterLink><a href="https://github.com/Mfuon2/chrono-utilz">GitHub ↗</a></nav><span class="version">v{{release.version}}</span></header>
+  <main><RouterView /></main>
+  <footer><span>ChronoUtilz · MIT license</span><span>Zero runtime dependencies. Explicit date behavior.</span></footer>
+</template>
