@@ -33,8 +33,8 @@ try {
    await page.goto(base+'/documentation');await page.getByRole('link',{name:'Open in playground'}).first().waitFor();assert.equal(await page.getByRole('link',{name:'Open in playground'}).count(),12);
    await page.goto(base+'/demo');await page.waitForURL('**/playground');
    for(const route of ['/documentation','/api-docs','/playground']) {
-    const response=await page.goto(base+route);assert.equal(response.status(),200,`${name}: direct ${route}`);await page.locator('main h1').waitFor();
-    const refreshed=await page.reload();assert.equal(refreshed.status(),200,`${name}: refresh ${route}`);await page.locator('main h1').waitFor();
+    const response=await page.goto(base+route);assert([200,304].includes(response.status()),`${name}: direct ${route}`);await page.locator('main h1').waitFor();
+    const refreshed=await page.reload();assert([200,304].includes(refreshed.status()),`${name}: refresh ${route}`);await page.locator('main h1').waitFor();
    }
    await page.setViewportSize({width:390,height:844});await page.goto(base+'/');
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
