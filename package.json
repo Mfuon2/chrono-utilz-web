@@ -4,26 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/build-sandbox.mjs && vite",
+    "build": "node scripts/build-sandbox.mjs && vite build",
     "preview": "vite preview",
-    "start": "npm run dev",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sync:library": "node scripts/sync-library.mjs",
+    "test": "node scripts/test-browser.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@playwright/test": "1.65.1",
     "@vitejs/plugin-vue": "^6.0.1",
+    "esbuild": "0.25.12",
     "gh-pages": "^6.3.0",
     "tailwindcss": "^4.1.13",
     "vite": "^7.1.4"
   },
   "dependencies": {
-    "@mfuon2/chrono-utilz": "^2.0.1",
+    "markdown-it": "15.0.3",
+    "sucrase": "3.35.1",
     "vue": "^3.5.21",
     "vue-gtag": "^3.6.1",
     "vue-router": "^4.5.1"
