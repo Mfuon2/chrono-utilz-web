@@ -27,10 +27,10 @@ try {
    assert.match(await execute('while(true) {}'),/timed out/);
    await page.fill('#code-editor','await new Promise(()=>{});');await run.click();await page.getByRole('button',{name:'Stop',exact:true}).click();assert.equal(await page.locator('[role=status]').innerText(),'Stopped');
    assert.match(await execute("console.log(typeof fetch, typeof XMLHttpRequest, typeof WebSocket); try { console.log(parent.document); } catch(e) { console.log('isolated'); }"),/undefined undefined undefined[\s\S]*isolated/);
-   await page.goto(base+'/api-docs');assert.equal(await page.locator('.api-entry').count(),136);
+   await page.goto(base+'/api-docs');await page.locator('.api-entry').first().waitFor();assert.equal(await page.locator('.api-entry').count(),136);
    await page.fill('#api-search','convertTimezone');assert.equal(await page.locator('.api-entry').count(),1);
    await page.getByRole('link',{name:'Use in playground'}).click();await page.waitForURL('**/playground?api=convertTimezone');assert.match(await page.inputValue('#code-editor'),/import \{ convertTimezone \}/);
-   await page.goto(base+'/documentation');assert.equal(await page.getByRole('link',{name:'Open in playground'}).count(),12);
+   await page.goto(base+'/documentation');await page.getByRole('link',{name:'Open in playground'}).first().waitFor();assert.equal(await page.getByRole('link',{name:'Open in playground'}).count(),12);
    await page.goto(base+'/demo');await page.waitForURL('**/playground');
    await page.setViewportSize({width:390,height:844});await page.goto(base+'/');
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
