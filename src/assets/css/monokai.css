@@ -1,0 +1,21 @@
+/* Monokai syntax theme for every code surface (highlight.js token classes). */
+:root{--mk-bg:#272822;--mk-fg:#f8f8f2;--mk-comment:#88846f;--mk-pink:#f92672;--mk-yellow:#e6db74;--mk-purple:#ae81ff;--mk-green:#a6e22e;--mk-blue:#66d9ef;--mk-orange:#fd971f;--mk-line:#3e3d32}
+pre,pre code.hljs,.code-editor{background:var(--mk-bg);color:var(--mk-fg)}
+.hljs-comment,.hljs-quote,.hljs-meta{color:var(--mk-comment);font-style:italic}
+.hljs-keyword,.hljs-operator,.hljs-selector-tag,.hljs-doctag,.hljs-name{color:var(--mk-pink)}
+.hljs-string,.hljs-regexp,.hljs-template-string,.hljs-symbol,.hljs-addition{color:var(--mk-yellow)}
+.hljs-number,.hljs-literal,.hljs-variable.constant_{color:var(--mk-purple)}
+.hljs-title,.hljs-title.function_,.hljs-attr,.hljs-section,.hljs-selector-id,.hljs-selector-class{color:var(--mk-green)}
+.hljs-built_in,.hljs-type,.hljs-title.class_,.hljs-variable.language_{color:var(--mk-blue);font-style:italic}
+.hljs-params,.hljs-attribute,.hljs-subst{color:var(--mk-orange)}
+.hljs-property{color:var(--mk-fg)}
+.hljs-deletion{color:var(--mk-pink)}
+.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
+/* Playground editor: a highlighted layer beneath a transparent textarea with identical metrics. */
+.code-editor{position:relative;border-radius:0 0 9px 9px;overflow:hidden}
+.code-editor .code-layer,.editor-grid .code-editor textarea{margin:0;padding:22px;border:0;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;line-height:1.8;tab-size:2;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;letter-spacing:0;scrollbar-gutter:stable}
+.code-editor .code-layer{position:absolute;inset:0;overflow:hidden;border-radius:0;pointer-events:none}
+.code-editor .code-layer code{font:inherit;background:transparent}
+.editor-grid .code-editor textarea{position:relative;background:transparent;color:transparent;caret-color:var(--mk-fg);border-radius:0;overflow:auto}
+.editor-grid .code-editor textarea::selection{background:#49483e;color:transparent}
+.panel-heading:not(.output-panel .panel-heading){background:var(--mk-bg);border-color:var(--mk-line);color:var(--mk-green)}
