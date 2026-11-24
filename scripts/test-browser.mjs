@@ -32,6 +32,10 @@ try {
    await page.getByRole('link',{name:'Use in playground'}).click();await page.waitForURL('**/playground?api=convertTimezone');assert.match(await page.inputValue('#code-editor'),/import \{ convertTimezone \}/);
    await page.goto(base+'/documentation');await page.getByRole('link',{name:'Open in playground'}).first().waitFor();assert.equal(await page.getByRole('link',{name:'Open in playground'}).count(),12);
    await page.goto(base+'/demo');await page.waitForURL('**/playground');
+   for(const route of ['/documentation','/api-docs','/playground']) {
+    const response=await page.goto(base+route);assert.equal(response.status(),200,`${name}: direct ${route}`);await page.locator('main h1').waitFor();
+    const refreshed=await page.reload();assert.equal(refreshed.status(),200,`${name}: refresh ${route}`);await page.locator('main h1').waitFor();
+   }
    await page.setViewportSize({width:390,height:844});await page.goto(base+'/');
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
    if(name==='chromium')await page.screenshot({path:'test-results/home-mobile.png',fullPage:true});
