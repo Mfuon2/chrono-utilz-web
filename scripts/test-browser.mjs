@@ -12,7 +12,7 @@ try {
    const context=await browser.newContext({timezoneId:'Africa/Nairobi'}),page=await context.newPage();
    const failures=[];page.on('pageerror',e=>failures.push(e.message));
    let runs=0;
-   const open=async(query='')=>{await page.goto(base+'/playground'+query);await page.waitForFunction(()=>!document.querySelector('.play-toolbar button').disabled);runs=0;};
+   const open=async(query='')=>{await page.goto(base+'/playground'+query);await page.waitForFunction(()=>document.querySelector('.play-toolbar button')?.disabled===false);runs=0;};
    const run=page.getByRole('button',{name:'Run code',exact:true});
    const press=async()=>{if(runs>=15)await open();runs++;await page.waitForTimeout(550);await run.click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent!=='Running');};
    await open();
