@@ -17,6 +17,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: node scripts/verify-snapshot.mjs
+      - run: node scripts/verify-examples.mjs
       - run: npm run build
       - run: npx playwright install --with-deps chromium firefox webkit
       - run: npm test
