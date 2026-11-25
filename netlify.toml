@@ -11,3 +11,5 @@
     Cache-Control = "no-store"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer"
+    Content-Security-Policy = "default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' blob:; worker-src blob:; connect-src 'none'; img-src 'none'; media-src 'none'; font-src 'none'; style-src 'none'; frame-src 'none'; child-src blob:; form-action 'none'; base-uri 'none'"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=()"
